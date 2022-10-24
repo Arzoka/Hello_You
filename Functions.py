@@ -7,19 +7,6 @@ import os
 import colorama
 import sys
 
-#Variables
-
-running = True
-active = True
-inventory = []
-typetime = 0.06
-WaitTimeBetweenSentence = 0.3
-PlayerColor = colorama.Fore.CYAN
-CharacterColor = colorama.Fore.RED
-ChoiceMenuColor = colorama.Fore.GREEN
-TextColor = colorama.Fore.WHITE
-Speaker = ""
-
 #Functions
 
 def end():
@@ -41,7 +28,9 @@ def speak(s,v):
     global WaitTimeBetweenSentence
     global Speaker
     global typetime
-    global CharacterColor
+    from Variables import CharacterColor
+    from Variables import WaitTimeBetweenSentence
+    from Variables import typetime
 
     sys.stdout.write(CharacterColor +Speaker + ": ")
 
