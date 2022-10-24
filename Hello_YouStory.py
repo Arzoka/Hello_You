@@ -26,6 +26,9 @@ def end():
     active = False
     quit()
 
+def clearscreen():
+    os.system("cls")
+
 def wait(GivenTime):
     time.sleep(GivenTime)
 
@@ -48,10 +51,12 @@ def speak(s,v):
         print('')
 
 while(active == True):
-    os.system("cls")
+    clearscreen()
+
     Speaker = "???"
 
     speak("Hey!",1)
     speak("You there!",1)
     speak("Wake up!",1)
+    
     end()
