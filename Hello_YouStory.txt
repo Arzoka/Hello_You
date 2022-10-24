@@ -1,0 +1,22 @@
+Fantasy choice-based roguelike
+
+--Requirements
+Story consists of four chronological compartments: Before leaving, the journey, being in
+the Netherlands, and the future
+If, and, else statements
+
+
+--Programming
+Player chooses playername
+events based on functions, functions are randomized, all functions have their own choices
+to create new sets of events.
+
+--Info
+
+
+Story;
+The story starts in MC's own world, a journey away from the portal only to be sucked into it
+anyways.
+
+--Story
+
