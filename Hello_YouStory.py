@@ -4,7 +4,7 @@ from operator import truediv
 import time
 import random
 import os
-import colorama
+from colorama import Fore
 import sys
 
 #Functions
@@ -15,20 +15,11 @@ from Functions import wait
 from Functions import end
 from Functions import changespeaker
 
-#Variables
+#StartCode
 
 running = True
-active = True
-inventory = []
-typetime = 0.06
-WaitTimeBetweenSentence = 0.3
-PlayerColor = colorama.Fore.CYAN
-CharacterColor = colorama.Fore.RED
-ChoiceMenuColor = colorama.Fore.GREEN
-TextColor = colorama.Fore.WHITE
-Speaker = ""
 
-while(active == True):
+while(running == True):
     clearscreen()
 
     changespeaker("???")
