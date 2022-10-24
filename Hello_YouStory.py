@@ -7,6 +7,14 @@ import os
 import colorama
 import sys
 
+#Functions
+
+from Functions import clearscreen
+from Functions import speak
+from Functions import wait
+from Functions import end
+from Functions import changespeaker
+
 #Variables
 
 running = True
@@ -20,43 +28,13 @@ ChoiceMenuColor = colorama.Fore.GREEN
 TextColor = colorama.Fore.WHITE
 Speaker = ""
 
-#Functions
-
-def end():
-    active = False
-    quit()
-
-def clearscreen():
-    os.system("cls")
-
-def wait(GivenTime):
-    time.sleep(GivenTime)
-
-def speak(s,v):
-    global WaitTimeBetweenSentence
-    global Speaker
-    global typetime
-    global CharacterColor
-
-    sys.stdout.write(CharacterColor +Speaker + ": ")
-
-    wait(WaitTimeBetweenSentence)
-
-    for c in s:
-        sys.stdout.write(TextColor + c)
-        sys.stdout.flush()
-        time.sleep(typetime)
-
-    if v == 1:
-        print('')
-
 while(active == True):
     clearscreen()
 
-    Speaker = "???"
+    changespeaker("???")
 
     speak("Hey!",1)
     speak("You there!",1)
     speak("Wake up!",1)
-    
+
     end()
