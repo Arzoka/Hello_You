@@ -32,6 +32,7 @@ from Variables import Bravery
 def DoError1():
     global ErrorColor
     global Error1
+    
     print('')
     print(ErrorColor + Error1)
     print(TextColor + '')
@@ -39,6 +40,7 @@ def DoError1():
 def DoError2():
     global ErrorColor
     global Error2
+
     print('')
     print(ErrorColor + Error2)
     print(TextColor + '')
@@ -66,6 +68,7 @@ def ChoiceMenu2(s,s1):
     global TextColor
     global ErrorColor
     global Error2
+
     ChoiceMenuRun = True
     while ChoiceMenuRun == True:
         print('')
@@ -84,6 +87,7 @@ def ChoiceMenu3(s,s1,s2):
     global TextColor
     global ErrorColor
     global Error2
+    
     ChoiceMenuRun = True
     while ChoiceMenuRun == True:
         print('')
@@ -103,6 +107,7 @@ def ChoiceMenu4(s,s1,s2,s3):
     global TextColor
     global ErrorColor
     global Error2
+
     ChoiceMenuRun = True
     while ChoiceMenuRun == True:
         print('')
