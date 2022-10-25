@@ -40,4 +40,10 @@ while True:
 
         Event("Honesty",3)
 
-    end()
+        end()
+
+    elif x == "b":
+        end()
+    
+    elif x == "c":
+        end()
