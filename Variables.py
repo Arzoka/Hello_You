@@ -24,6 +24,7 @@ actioncharacter = "*"
 
 Error1 = "ERROR 1: Event stat not found." #Event error
 Error2 = "ERROR 2: Choice not found." #Choice menu error
+Error3 = "ERROR 3: Code broke, cause unknown." #Code breaking
 
 #Stats
 
