@@ -1,2 +1,3 @@
 # Hello_You
-Hello you assignments; deadline 10/28/2022 17:00
+
+Deze folder zal alle code bevatten om mijn hello_you verhaal te laten werken, de deadline hiervoor is 10/28/22 17:00.
