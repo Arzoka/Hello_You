@@ -38,6 +38,7 @@ while True:
 
         Speak("I... Don't know",1)
 
+        #Add honesty
         Event("Honesty",3)
 
         end()
