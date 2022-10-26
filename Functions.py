@@ -6,6 +6,11 @@ import random
 import os
 import colorama
 import sys
+import pyaudio
+import wave
+import keyboard
+from threading import Thread
+from playsound import playsound
 
 from Variables import ChoiceMenuColor, PlayerColor
 from Variables import CharacterColor
@@ -27,12 +32,43 @@ from Variables import Manipulation
 from Variables import Comedy
 from Variables import Bravery
 
+from pynput.keyboard import Key, Listener
+
+pressed = False
+
+def on_press(key):
+    global pressed
+    if pressed == False:
+        if result == 1:
+            playsound('AudioFiles\\typesound.mp3', block=False)
+        pressed = True
+
+def on_release(key):
+    global pressed
+    pressed = False
+
+# Collect events until released
+
+result = 0
+
+holding = False
+
+def inputsound():
+    while True:
+        if result == 1:
+            with Listener(
+                on_press=on_press,
+                on_release=on_release) as listener:
+                listener.join()
+        elif result == 0:
+            break
+    
 #Functions
 
 def DoError1():
     global ErrorColor
     global Error1
-    
+
     print('')
     print(ErrorColor + Error1)
     print(TextColor + '')
@@ -87,7 +123,8 @@ def ChoiceMenu3(s,s1,s2):
     global TextColor
     global ErrorColor
     global Error2
-    
+    global result
+
     ChoiceMenuRun = True
     while ChoiceMenuRun == True:
         print('')
@@ -95,7 +132,11 @@ def ChoiceMenu3(s,s1,s2):
         print(ChoiceMenuColor + "b)",s1)
         print(ChoiceMenuColor + "c)",s2)
         print(TextColor)
+        result = 1
+        t = Thread(target=inputsound)
+        t.start()
         answer = input().lower()
+        result = 0
         if answer in["a","b","c"]:
             ChoiceMenuRun = False
             return answer
@@ -193,6 +234,7 @@ def Speak(s,v):
     wait(WaitTimeBetweenSentence)
 
     for c in s:
+        playsound('AudioFiles\\talking.mp3', block=False)
         sys.stdout.write(TextColor + c)
         sys.stdout.flush()
         time.sleep(typetime)
