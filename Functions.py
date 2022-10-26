@@ -234,7 +234,10 @@ def Speak(s,v):
     wait(WaitTimeBetweenSentence)
 
     for c in s:
-        playsound('AudioFiles\\talking.mp3', block=False)
+        if SpeakType == "NPC":
+            playsound('AudioFiles\\talking.mp3', block=False)
+        elif SpeakType == "PLR":
+            playsound('AudioFiles\\playertalking.mp3', block=False)
         sys.stdout.write(TextColor + c)
         sys.stdout.flush()
         time.sleep(typetime)
