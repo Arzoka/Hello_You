@@ -1,5 +1,6 @@
 #Modules
 
+from ast import NameConstant
 from operator import truediv
 import time
 import random
@@ -288,6 +289,7 @@ def Speak(s,v):
             sys.stdout.flush()
             playsound('AudioFiles\\talking.mp3', block=False)
             time.sleep(typetime)
+        print('')
 
 def Start():
     ClearScreen()
@@ -335,13 +337,15 @@ def one_c():
     StartTwo()
 
 def StartTwo():
+    global Name
     ChangeSpeaker("???")
     ChangeSpeakerType("NPC")
-    Speak("Either way, we have to go!",1)
+    Speak("Either way, we have to go right now.",1)
     Speak("By the way, what's your name?",2)
     Speak("Ahh, that's a cool name!",1)
     ChangeSpeaker("Yuki")
     Speak("My name is Yuki!",1)
     Speak("Nice to meet you",3)
-
+    Speak("Okay, we have to go, there's soldiers on our tail!",1)
+    Action(Name + " and Yuki start running")
     end()
