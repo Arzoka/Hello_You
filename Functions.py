@@ -4,6 +4,7 @@ from operator import truediv
 import time
 import random
 import os
+from tokenize import Name
 import colorama
 import sys
 import pyaudio
@@ -17,6 +18,7 @@ from Variables import CharacterColor
 from Variables import EventColor
 from Variables import TextColor
 from Variables import ActionColor
+from Variables import StatColor
 from Variables import ErrorColor
 
 from Variables import typetime
@@ -35,13 +37,20 @@ from Variables import Bravery
 from pynput.keyboard import Key, Listener
 
 pressed = False
+KeyPressed = ""
 
 def on_press(key):
     global pressed
+    global KeyPressed
     if pressed == False:
         if result == 1:
             playsound('AudioFiles\\typesound.mp3', block=False)
         pressed = True
+    elif KeyPressed != key:
+        if result == 1:
+            playsound('AudioFiles\\typesound.mp3', block=False)
+        pressed = True
+    KeyPressed = key
 
 def on_release(key):
     global pressed
@@ -50,6 +59,7 @@ def on_release(key):
 # Collect events until released
 
 result = 0
+Name = ""
 
 holding = False
 
@@ -62,7 +72,7 @@ def inputsound():
                 listener.join()
         elif result == 0:
             break
-    
+
 #Functions
 
 def DoError1():
@@ -164,6 +174,18 @@ def ChoiceMenu4(s,s1,s2,s3):
         else:
             DoError2()
 
+def ShowStats():
+    global Honesty
+    global Manipulation
+    global Comedy
+    global Bravery
+    global StatColor
+    print(StatColor + "Honesty: " + str(Honesty))
+    print(StatColor + "Manipulation: " + str(Manipulation))
+    print(StatColor + "Comedy: " + str(Comedy))
+    print(StatColor + "Bravery: " + str(Bravery))
+    
+
 def Event(s,v):
     global EventColor
     global TextColor
@@ -223,6 +245,8 @@ def Speak(s,v):
     global CharacterColor
     global typetime
     global TextColor
+    global Name
+    global result
 
     print('')
     
@@ -244,3 +268,80 @@ def Speak(s,v):
 
     if v == 1:
         print('')
+    elif v == 2:
+        print('')
+        print('')
+        if Name == "":
+            result = 1
+            answer = input(PlayerColor + "Player" + ": " + TextColor)
+            Name = answer
+            return(answer)
+        else:
+            result = 1
+            answer = input(PlayerColor + Name + ": " + TextColor)
+            return(answer)
+        print('')
+    elif v == 3:
+        Added = " "+Name+"!"
+        for c in Added:
+            sys.stdout.write(TextColor + c)
+            sys.stdout.flush()
+            playsound('AudioFiles\\talking.mp3', block=False)
+            time.sleep(typetime)
+
+def Start():
+    ClearScreen()
+
+    ChangeSpeaker("???")
+    ChangeSpeakerType("NPC")
+
+    Speak("Hey!",1)
+    Speak("Are you there??",1)
+    Speak("Wake up!",1)
+    Speak("Hello??",1)
+
+    Action("You wake up")
+
+    Speak("Oh you're finally awake!",1)
+    Speak("What happened to you?",1)
+
+    x = ChoiceMenu3("I don't know","ur mom","I was sent by the gods to help you out")
+
+    ChangeSpeaker("Player")
+    ChangeSpeakerType("PLR")
+
+    if x == "a":
+        one_a()
+
+    elif x == "b":
+        one_b()
+    
+    elif x == "c":
+        one_c()
+
+def one_a():
+    Speak("I... Don't know",1)
+    Event("Honesty",3)
+    StartTwo()
+
+def one_b():
+    Speak("ur mom",1)
+    Event("Comedy",3)
+    StartTwo()
+
+def one_c():
+    Speak("I was sent by the gods to help you out",1)
+    Event("Manipulation",3)
+    StartTwo()
+
+def StartTwo():
+    ChangeSpeaker("???")
+    ChangeSpeakerType("NPC")
+    Speak("Either way, we have to go!",1)
+    Speak("By the way, what's your name?",2)
+    Speak("Ahh, that's a cool name!",1)
+    ChangeSpeaker("Yuki")
+    Speak("My name is Yuki!",1)
+    Speak("Nice to meet you",3)
+
+    end()

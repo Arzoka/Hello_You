@@ -16,8 +16,13 @@ Changelogs:
 - Made code cleaner
 - Started work on story
 
+10/26/2022:
+- Added more functions
+- Added sounds
+-Pushed all to github
 
-
+10/27/2022:
+- Refined code
 
 
 Deadline: 10/28/22 17:00

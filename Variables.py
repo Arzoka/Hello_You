@@ -8,6 +8,7 @@ CharacterColor = Fore.RED
 ChoiceMenuColor = Fore.GREEN
 TextColor = Fore.WHITE
 EventColor = Fore.LIGHTMAGENTA_EX
+StatColor = Fore.LIGHTMAGENTA_EX
 ActionColor = Fore.YELLOW
 ErrorColor = Fore.RED
 
