@@ -11,6 +11,7 @@ EventColor = Fore.LIGHTMAGENTA_EX
 StatColor = Fore.LIGHTMAGENTA_EX
 ActionColor = Fore.YELLOW
 ErrorColor = Fore.RED
+DeathColor = Fore.RED
 
 #Timing
 
@@ -33,3 +34,13 @@ Honesty = 0
 Manipulation = 0
 Comedy = 0
 Bravery = 0
+PlrHP = 25
+inventory = []
+
+#Code
+
+pressed = False
+KeyPressed = ""
+
+#DatingSim
+DatingList = ["Jeff Satur","Johnny Depp","Lan Zhan","Wei Wuxian","Bible Sumett"]
