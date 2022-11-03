@@ -35,6 +35,7 @@ Manipulation = 0
 Comedy = 0
 Bravery = 0
 PlrHP = 25
+PlrLvl = 69
 inventory = []
 
 #Code
