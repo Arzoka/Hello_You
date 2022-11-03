@@ -11,29 +11,27 @@ from threading import Thread
 from playsound import playsound
 from pynput.keyboard import Key, Listener
 
+#Key System
+
 def on_press(key):
     global pressed
     global KeyPressed
+
     if pressed == False:
         if result == 1:
             playsound('AudioFiles\\typesound.mp3', block=False)
         pressed = True
+
     elif KeyPressed != key:
         if result == 1:
             playsound('AudioFiles\\typesound.mp3', block=False)
         pressed = True
+
     KeyPressed = key
 
 def on_release(key):
     global pressed
     pressed = False
-
-slimecount = 0
-result = 0
-
-Name = ""
-
-holding = False
 
 def inputsound():
     while True:
@@ -47,16 +45,15 @@ def inputsound():
 
 #Functions
 
-#Usables
-
 def dots():
     Sentence = ""
+
     for i in range(5):
         ClearScreen()
         Sentence = Sentence + "."
         if Sentence == "....":
             Sentence = "."
-            time.sleep(1)
+            wait(1)
         EventWrite(Sentence)
 
 def DoError1():
@@ -87,10 +84,12 @@ def wait(GivenTime):
 
 def ChangeSpeaker(sp):
     global Speaker
+
     Speaker = sp
 
 def ChangeSpeakerType(sptype):
     global SpeakType
+
     SpeakType = sptype
 
 def ChoiceMenu2(s,s1):
@@ -198,7 +197,7 @@ def Event(s,v):
     for c in s1:
         sys.stdout.write(EventColor + c)
         sys.stdout.flush()
-        time.sleep(typetime)
+        wait(typetime)
     
     if s.lower() == "honesty":
         Honesty = Honesty + v
@@ -227,7 +226,7 @@ def Action(s):
     for c in s1:
         sys.stdout.write(ActionColor + c)
         sys.stdout.flush()
-        time.sleep(typetime)
+        wait(typetime)
     print('')
 
 def EventWrite(s):
@@ -237,7 +236,7 @@ def EventWrite(s):
     for c in s:
         sys.stdout.write(EventColor + c)
         sys.stdout.flush()
-        time.sleep(typetime / 2)
+        wait(typetime / 2)
 
 def death(s):
     global DeathColor
@@ -246,7 +245,7 @@ def death(s):
         playsound('AudioFiles\\playertalking.mp3', block=False)
         sys.stdout.write(DeathColor + c)
         sys.stdout.flush()
-        time.sleep(typetime)
+        wait(typetime)
 
 def death2(s):
     global DeathColor
@@ -255,7 +254,7 @@ def death2(s):
         playsound('AudioFiles\\playertalking.mp3', block=False)
         sys.stdout.write(DeathColor + c)
         sys.stdout.flush()
-        time.sleep(typetime / 10)
+        wait(typetime / 10)
 
 def playagain():
     global Name
@@ -275,7 +274,7 @@ def playagain():
             Name = ""
             ClearScreen()
             death("Loading..")
-            time.sleep(2)
+            wait(2)
             Start()
         elif x == "n":
             end()
@@ -290,7 +289,7 @@ def Battle(Entity,givenmessage):
     chance = 2
     ClearScreen()
     EventWrite("A "+str(Entity)+" appeared!")
-    time.sleep(2)
+    wait(2)
     if Entity == "Slime":
         ClearScreen()
         MaxHP = 5
@@ -333,7 +332,7 @@ def Battle(Entity,givenmessage):
                         if slimeattack == 1:
                             EventWrite("The slime attacked and dealt 2 damage!")
                             PlrHP = PlrHP - 2
-                    time.sleep(2)
+                    wait(2)
             else:
                 dumbending()
         print('')
@@ -353,7 +352,7 @@ def Battle(Entity,givenmessage):
             else:
                 ClearScreen()
                 Action("You continue to roam around in search of slimes...")
-                time.sleep(random.randint(1,5))
+                wait(random.randint(1,5))
                 Battle("Slime","five")
         elif givenmessage.lower() == "identify3":
             Battle("Dragon")
@@ -402,7 +401,7 @@ def Battle(Entity,givenmessage):
                         if slimeattack == 1:
                             EventWrite("The dragon attacked and dealt 420 damage!")
                             PlrHP = PlrHP - 420
-                    time.sleep(2)
+                    wait(2)
             else:
                 dragonslayentending()
         print('')
@@ -439,7 +438,7 @@ def Speak(s,v):
             playsound('AudioFiles\\talking.mp3', block=False)
         sys.stdout.write(TextColor + c)
         sys.stdout.flush()
-        time.sleep(typetime)
+        wait(typetime)
 
     if v == 1:
         print('')
@@ -462,7 +461,7 @@ def Speak(s,v):
             sys.stdout.write(TextColor + c)
             sys.stdout.flush()
             playsound('AudioFiles\\talking.mp3', block=False)
-            time.sleep(typetime)
+            wait(typetime)
         print('')
     result = 0
 
@@ -509,7 +508,7 @@ def dumbending():
     death("The slime continues to feast on your arm and due to your new fragile body it succeeds to cause serious injury")
     death("You died due to slime absorbtion.")
     ClearScreen()
-    time.sleep(1)
+    wait(1)
     death("The dumb ending")
     playagain()
 
@@ -528,7 +527,7 @@ def GodEnding():
             Event("Comedy",420)
         elif n == 4:
             Event("Bravery",420)
-    time.sleep(random.randint(1,3))
+    wait(random.randint(1,3))
     typetime = oldtypetime
     EventWrite("You've obtained godlike powers and no longer feel pressure from the dragon")
     EventWrite("You grow wings and feel stronger than you've ever been")
@@ -553,7 +552,7 @@ def GoodEnding():
     inventory.append("Dragon Scales")
     inventory.append("TDragon_Slayer")
     inventory.append("THero")
-    time.sleep(4)
+    wait(4)
     ClearScreen()
     EventWrite("You became the most powerful person in this world.")
     EventWrite("The good ending!")
@@ -567,6 +566,7 @@ def RunFromDragonEnding():
     Action("You attempt to run from the dragon")
     death("The dragon manifests a ball of energy and hits you with it")
     death("You died")
+
     playagain()
 
 #Story
@@ -607,44 +607,75 @@ def StartTwo(): #Two
     global Bravery
     global Comedy
     global Honesty
+
     ChangeSpeaker("???")
     ChangeSpeakerType("NPC")
+
     Speak("Either way, we have to go right now.",1)
     Speak("By the way, what's your name?",2)
     Speak("Ahh, that's a cool name!",1)
+
     ChangeSpeaker("Yuki")
+
     Speak("My name is Yuki!",1)
     Speak("Nice to meet you",3)
     Speak("Okay, we have to go, there's soldiers on our tail!",1)
+
     Action(Name + " and Yuki start running")
-    time.sleep(2)
+
+    wait(2)
+
     ChangeSpeaker("Soldier")
+
     Speak("STOP RIGHT THERE!!",1)
+
     Action("Bullets fly toward you at an incredible speed")
+
     ChangeSpeaker("Yuki")
+
     Speak("RUN!!",1)
-    time.sleep(2)
+
+    wait(2)
+
     Action("You feel three bullets puncture your body as you fall down on the ground")
+
     Speak(Name+"!",1)
+
     Action("You feel cold")
+
     Speak(Name.upper()+"!!",1)
-    Action("However you also feel warm")
-    Action("You're in pain however still very comfortable")
-    Action("Everything fades to black however the color also resembles white")
+
+    Action("You're in pain")
+
+    Action("Everything fades to black however the color also resembles a certain shade of white")
+
     ChangeSpeaker(Name)
     ChangeSpeakerType("PLR")
+
     Speak("What's happening..",1)
-    time.sleep(1)
+
+    wait(1)
+
     Speak("Am I dead?",1)
-    time.sleep(1)
+
+    wait(1)
+
     Speak("Did I die?",1)
-    time.sleep(1)
+
+    wait(1)
+
     Speak("I got shot.",1)
-    time.sleep(1)
+
+    wait(1)
+
     Speak("Yuki?",1)
-    time.sleep(3)
+
+    wait(3)
+
     ClearScreen()
-    time.sleep(1)
+
+    wait(1)
+
     NewWorld()
 
 def NewWorld(): #Three
@@ -653,26 +684,40 @@ def NewWorld(): #Three
     global Bravery
     global Comedy
     global Honesty
+
     Speak("I died..",1)
-    time.sleep(3)
+
+    wait(3)
+
     Speak("I can still feel my body..",1)
+
     Action("You try to open your eyes")
+
     Speak("!!!",1)
     Speak("What's this??",1)
+
     Action("You find yourself laying under a tree in a grass valley")
+
     Speak("What..?",1)
     Speak("I feel.. Different",1)
+
     Action("You look up at the sky and realize there are two planets you don't recognize")
+
     Speak("What?",1)
+
     Action("You feel a slimey texture on ur arm and turn to face it")
+
     Speak("A SLIME?!",1)
     Speak("WHAT SHOULD I DO?!",1)
+
     x = ChoiceMenu2("Run away","Fight it")
+
     if x == "a":
         Event("Honesty",3)
         Action("You run away far into the grasslands")
         Action("The slime lets go as soon as you start running fast enough.")
         AfterSlime()
+
     elif x == "b":
         Event("Bravery",3)
         Action("You flail your arms around like a kitten getting picked up and cry tears of disgust and fear")
@@ -682,41 +727,53 @@ def NewWorld(): #Three
 
 def AfterSlime(): #Four
     Action("You realize there's not much to see from here.")
+
     x = ChoiceMenu2("Search for a village","Stay here")
+
     if x == "a":
         SearchVillage()
+
     elif x == "b":
         Action("You decided to wait it out")
-        time.sleep(random.randint(1,8))
+        wait(random.randint(1,8))
         Battle("Dragon","a")
 
 def SearchVillage(): #Five
     global Name
     global inventory
+
     Action("You killed the slime and started walking in search for anything that isn't just grasslands")
     Action("After three hours of walking you stumble upon a village")
     Action("It seems to be guarded, however you've already come so far. No turning back now.")
     Action("You walk up to the village entrance.")
+
     ChangeSpeakerType("NPC")
     ChangeSpeaker("Guard")
+
     Halt()
 
 def Halt(): #Six
     global inventory
+
     Speak("HALT!",1)
     Speak("Who are you?",1)
+
     if "SlimeEssence" in inventory:
         x = ChoiceMenu3("I don't know","Where am I?","An adventurer (Slime Essence)")
+
     else:
         x = ChoiceMenu3("I don't know","Where am I?","An adventurer (SLIME ESSENCE NEEDED)")
+
     ChangeSpeakerType("PLR")
     ChangeSpeaker(Name)
+
     if x == "a":
         Speak("I don't know.",1)
         Event("Honesty",3)
         ChangeSpeakerType("NPC")
         ChangeSpeaker("Guard")
         HonestChoice()
+
     elif x == "b":
         Speak("Where am I?",1)
         Event("Bravery",2)
@@ -724,7 +781,9 @@ def Halt(): #Six
         ChangeSpeakerType("NPC")
         ChangeSpeaker("Guard")
         ShowLocation()
+
     elif x == "c":
+
         if "SlimeEssence" in inventory:
             Speak("An adventurer",1)
             Action("You show the slime essence as proof of ur skill")
@@ -734,6 +793,7 @@ def Halt(): #Six
             ChangeSpeakerType("NPC")
             ChangeSpeaker("Guard")
             AdventurerChoice()
+
         else:
             Halt()
 
@@ -744,54 +804,83 @@ def HonestChoice(): #SevenA
 def ShowLocation(): #SevenB
     Speak("Ahh what the heck, I'll show you around.",1)
     Speak("Switch!",1)
+
     Action("A different guard comes running up from behind a building and switches places with the guard you're talking to")
-    time.sleep(2)
+    
+    wait(2)
+
     Action("The guard escorts you into the village and shows you around")
     Action("You end up in front of the adventurers guild")
+
     Speak("All the people entering and leaving this village are usually either merchants or adventurers. Would you like to become an adventurer?",1)
+    
     x = ChoiceMenu2("yes","nah fam im good")
+
     if x == "a":
         AdventurersGuild()
+
     elif x == "b":
         ContinueTown()
 
 def AdventurerChoice(): #SevenC
+
     Speak("Ahh, an adventurer!",1)
     Speak("Killing mere slimes?",1)
+
     Action("The guard lets out a cringeworthingly loud laugh")
+
     Speak("Let me show you around kid!",1)
+
     Action("You follow the guard.")
+
     Speak("This is the adventurers guild, let's go inside!",1)
+
     AdventurersGuild()
 
 def ContinueTown(): #Eight1
     Action("The guard continues to take you around")
     Action("You end up in front of the gay bar")
+
     Speak("Would you like to become a gay?",1)
+
     x = ChoiceMenu2("yass queeennn slayyyyy pop that pussyyy!! yassssssss material gwrolll"," I like boobi.")
+    
     if x == "a":
         DatingSim1()
+
     elif x == "b":
         ContinueTown2()
 
 def DatingSim1(): #NineA
     global Name
+
     ClearScreen()
+
     Date = random.choice(DatingList)
+
     Action("You enter the gay bar")
+
     ChangeSpeakerType("NPC")
     ChangeSpeaker(Date)
+
     Speak("Hey, I haven't seen you around before",1)
     Speak("You new here?",1)
+
     ChangeSpeakerType("PLR")
     ChangeSpeaker(Name)
+
     Speak("Yea.",1)
+
     ChangeSpeakerType("NPC")
     ChangeSpeaker(Date)
+
     Speak("You want a drink?",1)
+
     x = ChoiceMenu2("Yes","No")
+
     if x == "a":
         DatingSim2(Date)
+
     elif x == "b":
         death("You got beat up by "+Date+" for rejecting them.")
         BetrayalEnding()
@@ -799,7 +888,9 @@ def DatingSim1(): #NineA
 def DatingSim2(Date): #NineA2
     Action("You continue to chat and enjoy drinks throughout the evening")
     Action("You forget about the war and enjoy ur reincarnated gay life with "+Date)
+
     EventWrite("The gay ending")
+
     playagain()
 
 def ContinueTown2(): #NineB
@@ -811,42 +902,67 @@ def ContinueTown2(): #NineB
 def AdventurersGuild(): #Eight2
     global Name
     global inventory
+
     Action("You and the guard enter the adventurers guild")
+
     Speak("This is the adventurers guild! Isn't it beautiful!",1)
+
     Action("The adventurers guild building was relatively small on the outside but upon entering you find yourself in a huge cave connecting to different sections.")
+    
     Speak("Let's go to the front desk",1)
+
     Action("You walk to the front desk")
+
     ChangeSpeaker("Front desk helper")
+
     Speak("Hello! How may I help you?",1)
+
     ChangeSpeaker(Name)
     ChangeSpeakerType("PLR")
+
     answer = ""
+
     while answer != "a":
+
         x = ChoiceMenu2("Register as an adventurer","Leave")
+        
         if x == "a":
             answer = x
+
             Speak("I'd like to register as an adventurer please.",1)
+
             ChangeSpeaker("Front desk helper")
             ChangeSpeakerType("NPC")
+
             Speak("Alright! Give me a second..",1)
-            time.sleep(4)
+
+            wait(4)
+
             Speak("All set! Here's your Adventurers Pass!",1)
+
             EventWrite("Obtained Adventurers Pass")
+
             inventory.append("AdventurersPass")
+
             Speak("Alright, we currently have two quests. Pick one!",1)
+
             x = ChoiceMenu2("Defeat five slimes in the grasslands","Identify three different creatures in the grasslands")
+           
             ChangeSpeaker(Name)
             ChangeSpeakerType("PLR")
+
             if x == "a":
                 Speak("I'll do the quest: Defeat five slimes in the grasslands",1)
                 ChangeSpeaker("Front desk helper")
                 ChangeSpeakerType("NPC")
                 DefeatFiveSlimes()
+
             elif x == "b":
                 Speak("Identify three different creatures in the grasslands",1)
                 ChangeSpeaker("Front desk helper")
                 ChangeSpeakerType("NPC")
                 IdentifyThree()
+
         elif x == "b":
             Action("The pressure isn't allowing you to leave.")
 
@@ -858,17 +974,23 @@ def IdentifyThree(): #Nine2B
 
 def DefeatedFiveSlimes(): #Ten2
     global PlrLvl
+
     Action("You go back to the adventurers guild to show your acomplishment")
+
     ChangeSpeakerType("NPC")
     ChangeSpeaker("Front Desk Helper")
+
     Speak("Nice! It seems you've defeated five slimes succesfully and grown to level "+str(PlrLvl)+"!",1)
     Speak("Would you like to take this quest again?",1)
+
     x = ChoiceMenu2("Take the quest again","Continue the story")
+
     if x == "a":
         ChangeSpeakerType("PLR")
         ChangeSpeaker(Name)
         Speak("I'd like to grow stronger and take the quest again.",1)
         DefeatFiveSlimes()
+
     elif x == "b":
         ContinueAdventure()
 
@@ -889,108 +1011,170 @@ def ContinueAdventure(): #Eleven
 
 def Evacuate(): #TwelveA
     Speak("LET'S GO!!",1)
-    time.sleep(0.5)
+
+    wait(0.5)
+
     ClearScreen()
+
     Action("You follow the guard into the town bunker")
+
     Speak("GO, RUN!",1)
+
     Action("You hear the guard screaming in pain from behind you")
+
     x = ChoiceMenu2("Go back for the guard","Continue running")
+
     if x == "a":
         Action("You go back to try and save the guard")
         dragonslayentending()
+
     elif x == "b":
         ContinueRunning()
     
 def SeekDragon(): #TwelveB
     Action("You run past the guard to go outside and find the dragon")
+
     Event("bravery",3)
+
     Speak("HEY!! WHERE ARE YOU GOING?!",1)
-    time.sleep(0.5)
+
+    wait(0.5)
+
     ClearScreen()
+
     ChangeSpeaker(Name)
     ChangeSpeakerType("PLR")
+
     Speak("I don't even know what I'm doing",1)
     Speak("After killing those slimes I felt something tho..",1)
     Speak("A certain power",1)
     Speak("A power to protect me from danger",1)
+
     Action("You get to the dragon, seeing a mere scratch on its head and all the people fighting it either knocked out or dead on the ground")
+    
     Speak("I...",1)
+
     Action("You lock eyes with the dragon")
     Action("It looks at you with a dissaranged look")
+
     x = ChoiceMenu2("Attempt to fight it","Run away")
+    
     if x == "a":
         FightDragon()
+    
     elif x == "b":
         RunFromDragonEnding()
 
 def FightDragon(): #Thirteen2
     ClearScreen()
+
     dots()
+
     death("You feel an extremely dangerous aura making you unable to move")
-    time.sleep(1)
+
+    wait(1)
+
     dots()
-    time.sleep(2)
+
+    wait(2)
+
     x = ChoiceMenu2("Try to move", " Stand still")
+    
     if x == "a":
         DragonTryToMove()
+    
     elif x == "b":
         dragonslayentending()
 
 def DragonTryToMove(): #Fourteen2A
     Action("You try to move")
+
     death("* The dragon looks at you in confusion *")
+
     Action("It doesn't work")
-    time.sleep(1)
+
+    wait(1)
+
     ClearScreen()
-    time.sleep(1)
+
+    wait(1)
+
     ChangeSpeaker("???")
     ChangeSpeakerType("GOD")
+
     Speak("VELDORA, TRUE DRAGON OF STORMS, FACE ME!",1)
+
     Action("The dragon changes its head towards the entity")
     Action("You're no longer stunned")
     Action("You turn around to look at the person talking, only to see a bright light and two enormous wings")
     Action("The winged entity seems to teleport towards the dragon and smites it with a beam of light")
     Action("The dragon doesn't seem to budge and bites the person.")
+
     death("The winged person is bit in half.")
+
     Action("The entity has dropped a mysterious golden ring")
+
     x = ChoiceMenu2("Pick it up and wear it","Leave it")
+
     if x == "a":
         GodEnding()
+
     elif x == "b":
         dragonslayentending()
 
 def ContinueRunning(): #Thirteen1
     Action("You decide to continue running to the bunker")
     Action("A hooded figure with what seems to be a staff emitting red light stops you")
+
     x = ChoiceMenu2("Shove them away and continue running","Punch them in the face")
+
     if x == "a":
         ContinueRunning2()
+
     elif x == "b":
         HoodedFigureFight()
 
 def ContinueRunning2(): #Thirteen1A
     Action("You shove the figure away and continue making your way to the bunker")
     Action("You finally make it to the bunker and the guards close the bunker door")
-    time.sleep(1)
+
+    wait(1)
+
     ClearScreen()
-    time.sleep(2)
+
+    wait(2)
+
     Action("Hours of silence pass")
-    time.sleep(0.5)
+
+    wait(0.5)
+
     ClearScreen()
+
     Action("You hear an extremely loud noise and start feeling nauseous")
     Action("You start losing your vision and balance")
+
     HoodedFigureEnding()
 
 def HoodedFigureFight(): #Thirteen1B
     Action("You punch the hooded figure in the face and continue running to the bunker")
+
     death("The hooded figure gets absolutely yeeted into a wall")
+
     Action("You get into the bunker and the guard closes the door")
-    time.sleep(1)
+
+    wait(1)
+
     ClearScreen()
-    time.sleep(1)
+
+    wait(1)
+
     Action("Hours pass")
+
     ChangeSpeaker("Guard")
     ChangeSpeakerType("NPC")
+
     Speak("THE DRAGON HAS BEEN SLAYED!",1)
+
     Action("Everybody cheers and the bunker is opened")
+    
     BunkerEnding()

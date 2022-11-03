@@ -32,15 +32,19 @@ Error3 = "ERROR 3: Code broke, cause unknown." #Code breaking
 #Stats
 
 Honesty = 0
+slimecount = 0
+result = 0
 Manipulation = 0
 Comedy = 0
 Bravery = 0
 PlrHP = 25
-PlrLvl = 2
+PlrLvl = 1
 inventory = ["SlimeEssence"]
+Name = ""
 
 #Code
 
+holding = False
 pressed = False
 KeyPressed = ""
 
