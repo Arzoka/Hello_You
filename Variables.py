@@ -12,6 +12,7 @@ StatColor = Fore.LIGHTMAGENTA_EX
 ActionColor = Fore.YELLOW
 ErrorColor = Fore.RED
 DeathColor = Fore.RED
+GodColor = Fore.YELLOW
 
 #Timing
 
@@ -35,8 +36,8 @@ Manipulation = 0
 Comedy = 0
 Bravery = 0
 PlrHP = 25
-PlrLvl = 69
-inventory = []
+PlrLvl = 2
+inventory = ["SlimeEssence"]
 
 #Code
 
