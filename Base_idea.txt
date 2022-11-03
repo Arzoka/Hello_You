@@ -18,5 +18,52 @@ Story;
 The story starts in MC's own world, a journey away from the portal only to be sucked into it
 anyways.
 
---Story
+Choices:
 
+1 Start
+2 StartTwo
+3 NewWorld
+4 AfterSlime
+5 SearchVillage
+6 Halt
+7 HonestChoice
+8 ShowLocation
+9 AdventurerChoice
+10 ContinueTown
+11 DatingSim1
+12 DatingSim2
+13 ContinueTown2
+14 AdventurersGuild
+15 DefeatFiveSlimes
+16 IdentifyThree
+17 DefeatedFiveSlime
+18 ContinueAdventure
+19 Evacuate
+20 SeekDragon
+21 FightDragon
+22 DragonTryToMove
+23 ContinueRunning
+24 ContinueRunning2
+25 HoodedFigureFight
+
+Endings:
+
+Good endings:
+
+1 God Ending
+2 Gay ending
+3 Pussy ending
+4 Good ending
+
+Bad endings:
+
+1 Glitch ending
+2 Dumb ending
+3 Betrayal ending
+4 dragon slayen't ending
+5 RunFromDragon ending
+6 HoodedFigure ending
+
+Name = "Yoshi"
+ChangeSpeaker("a")
+ChangeSpeakerType("NPC")
