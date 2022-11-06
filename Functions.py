@@ -495,7 +495,7 @@ def HoodedFigureEnding():
     death("The bunker roof is torn off and as you lie on the ground you see the dragon's red glowing eyes looking at you from above")
     death("The mysterious figure ending")
     playagain()
-
+#test
 def glitch():
     while True:
         original = "A̶̘̣̠̯̾̔̓͒̊̊͋̕B̷̳͉͖͉̱́́C̸̨̢̪̠̰͚͉̻̓̉̊̊̊̽́̚D̵̡͒͊Ê̷̪̚͝͠F̵̝̝̻͈͕́̎̚G̴̡̡̛͇͔͔̩̱̏͂̾̽̋̿̊͋H̸͉̿̏̅͊̄̋͘͘͠I̴̧̳͉̝͎̫̫͇͆̒͒̂͑͘̕J̴̡̮̯̥͎̜̺̈͛̓͗́̀̍Ḱ̶̨̛͚͚̯̮̺͔͕̔̎͐́͌̕̕L̸̪̳̀̓͌͠M̸̧̭̩̪̲̘̜͙̄͌͜Ņ̵̯͖̥̙̼͖͂͌͂̔͝Ǫ̵̨͉͕͔͎͙̣̋̂͆P̶͖̟̼̫̬̔̽̽Q̴̡͍̤͓͎͆͗͒͜R̵̢̺̼̺̳̭͍̐̀͌̎̓͜͠Ş̵̨͚͚̎̔͐̏̓̕͜͝͝Ť̴̫̎̈́U̴̧̡͙̗̰̟͖̟̥͗̈́̈͑̄̈V̵̨̢͔̞̞̱̲̔̓W̵̺̆̾̀͊ͅX̵͇̖̪̬͙͖͚̲̌̆̓̂͛͛͋̓͜Y̵̨͉̯̠͆͝Z̶̡̝̼̩̙̹̪̞̋̋"
