@@ -1,12 +1,12 @@
-# Hello_You
+# Hello You
 
-This folder contains all my code for the Hello You assignment
+This folder contains all my code for the Hello You assignment 
 
 ## Changelogs:
 
 ### 10/24/2022:
 
-- Finally started work on story
+- Started work on story
 
 ### 10/25/2022: 
 
